@@ -12,7 +12,7 @@ $Standard-radius: 0.5em;
   gap: 1em;
   overflow-y: scroll;
   font-size: 0.8rem;
-  span {
+  .home-container-span {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -25,6 +25,14 @@ $Standard-radius: 0.5em;
     font-size: 1.5rem;
     font-weight: 800;
     color: #ca2e2e;
+    display: flex;
+    flex-direction: column;
+    .site-title-store-name {
+      font-family: "Poppins", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: grey;
+    }
   }
 
   .image-slider-container {
@@ -47,9 +55,9 @@ $Standard-radius: 0.5em;
     border-radius: $Standard-radius;
 
     .menu-title-name {
-      color: black;
+      color: #4a4a4a;
       padding: 1em 0 0 0.4em;
-      font-size: 1.4em;
+      font-size: 1.8em !important;
     }
 
     .dish-container {
@@ -79,18 +87,35 @@ $Standard-radius: 0.5em;
         object-fit: cover;
         border-radius: $Standard-radius;
       }
-      h3 {
+      .item-name {
         font-size: 1em;
         color: rgb(137, 137, 137);
         text-overflow: ellipsis;
-        overflow: hidden;
         white-space: nowrap;
         max-width: 90%;
         font-weight: 600;
       }
-      p {
-        color: rgb(69, 69, 69);
-        font-weight: 800;
+      .item-description {
+        font-size: 0.8em;
+        color: rgb(137, 137, 137);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 220px;
+        flex-wrap: nowrap;
+        display: none;
+      }
+      // p {
+      //   color: rgb(69, 69, 69);
+      //   font-weight: 800;
+      // }
+      .price {
+        font-weight: bold;
+        color: #212121; /* Dark black for clear visibility */
+        font-size: 16px;
+      }
+
+      .price .currency {
+        color: #388e3c; /* Fresh green for ₹ symbol */
       }
       .cart-container {
         border: 3px solid #f5f4f7;
@@ -167,10 +192,6 @@ $Standard-radius: 0.5em;
     align-items: center;
   }
 
-  span {
-    margin: 0 0.5em;
-  }
-
   .cart-first-button {
     width: 100%;
     text-align: center;
@@ -230,7 +251,7 @@ $Standard-radius: 0.5em;
   flex-direction: column;
 }
 .cart-title-name {
-  padding: 2em 0.5em;
+  padding: 1em 0.5em;
 }
 .cart-item-container {
   display: flex;
@@ -243,7 +264,7 @@ $Standard-radius: 0.5em;
   flex-direction: column;
 }
 .cart-total-container {
-  position: absolute;
+  position: sticky;
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
@@ -254,9 +275,9 @@ $Standard-radius: 0.5em;
 }
 .cart-total-button {
   padding: 1em 2em;
-  background: #2e7d32;
+  background: #2e7d321e;
   border: none;
-  color: #fff;
+  color: #1e2e20;
   font-size: 1.2rem;
   border-radius: $Standard-radius;
   font-weight: 900;
@@ -329,6 +350,7 @@ $Standard-radius: 0.5em;
 .admin-content-entry-section-inner-form {
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
 .admin-table {
@@ -516,4 +538,266 @@ $Standard-radius: 0.5em;
 
 .qr-close-button:hover {
   background-color: #d9363e;
+}
+
+.disabled-container {
+  opacity: 0.5;
+  pointer-events: none;
+  img {
+    filter: grayscale(100%);
+  }
+}
+
+.admin-content-entry-section-inner-form-radio {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Creates spacing between elements */
+}
+
+.admin-content-entry-section-inner-form-radio label {
+  font-weight: 600;
+  color: #4a4a4a; /* Dark grey for better readability */
+  cursor: pointer;
+}
+
+.admin-content-entry-section-inner-form-radio input[type="radio"] {
+  appearance: none; /* Removes default styling */
+  width: 11px;
+  height: 11px;
+  border: 2px solid #e63946; /* Matches the red theme */
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.admin-content-entry-section-inner-form-radio
+  input[type="radio"]:checked::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #e63946; /* Same red for consistency */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the dot */
+}
+.user-info-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    color: grey;
+  }
+}
+.image-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.order-button {
+  background-color: #f8fff9; /* Green background */
+  color: rgb(131, 131, 131);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  .order-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-id {
+    font-weight: 900 !important;
+    color: rgb(94, 94, 94);
+  }
+}
+
+.order-button:hover {
+  background-color: #b4e2b6; /* Darker green on hover */
+}
+
+.order-button:disabled {
+  background-color: #9e9e9e; /* Grey background when disabled */
+  cursor: not-allowed;
+}
+
+.toast {
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffcece; /* Green background */
+  color: rgb(238, 62, 62);
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.category-container {
+  padding: 1em;
+  background: rgba(240, 240, 240, 0.861);
+  border-radius: $Standard-radius;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  .category-item {
+    padding: 0.5em 1em;
+    background: #fff;
+    font-weight: 600;
+    border-radius: $Standard-radius;
+    margin-right: 1em;
+    cursor: pointer;
+    transition: 0.5s ease;
+    color: #4a4a4a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+
+    .category-item-cross {
+      color: #8a8a8a;
+      margin-top: 0.1em;
+    }
+  }
+}
+.logout-button {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  background-color: #ffffff; /* Red background for logout */
+  color: #b32322; /* White text */
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #b32322; /* Darker red on hover */
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 77, 79, 0.8); /* Focus effect */
+  }
+}
+.order-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.order-status-button-pending {
+  background-color: #ffa726 !important;
+}
+.order-status-button-completed {
+  background-color: #4caf4f41 !important;
+  pointer-events: none;
+  color: #229526 !important;
+  font-weight: 800 !important;
+}
+.order-status-button-cancelled {
+  background-color: #f44336 !important;
+  pointer-events: none;
+}
+
+.order-summery {
+  position: relative;
+  height: 100vh;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  background: rgb(244, 244, 244);
+
+  &__title {
+    color: #616161;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  &__id {
+    font-weight: 400;
+
+    p {
+      color: rgb(185, 185, 185);
+      font-size: 0.8rem !important;
+    }
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85%;
+  }
+  &__items-list {
+    list-style: none;
+    padding: 0;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  &__qr-code {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.092);
+  }
+  &__item:last-of-type {
+    border-bottom: 1px solid transparent;
+  }
+
+  &__item-name {
+    color: #555;
+    font-weight: 800;
+    flex: 2;
+  }
+
+  &__item-price {
+    color: #4caf50;
+    font-weight: 600;
+    flex: 1;
+    text-align: right;
+  }
+
+  &__item-quantity {
+    color: #757575;
+    font-weight: 400;
+    flex: 1;
+    text-align: right;
+  }
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ececec;
+    padding: 18px 12px;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-top: 1em;
+
+    &-label {
+      flex: 1;
+      text-align: left;
+    }
+
+    &-amount {
+      flex: 1;
+      text-align: right;
+      font-size: 1.2rem;
+    }
+  }
 }

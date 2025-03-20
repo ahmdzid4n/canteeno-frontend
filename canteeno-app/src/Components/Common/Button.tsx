@@ -18,11 +18,17 @@ type ButtonPropsType = {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   value?: string;
+  className?: string;
 };
 
-export const Button = ({ type, onClick, value }: ButtonPropsType) => {
+export const Button = ({
+  type,
+  onClick,
+  value,
+  className,
+}: ButtonPropsType) => {
   return (
-    <ButtonStyle onClick={onClick} type={type}>
+    <ButtonStyle onClick={onClick} type={type} className={className}>
       {value}
     </ButtonStyle>
   );
